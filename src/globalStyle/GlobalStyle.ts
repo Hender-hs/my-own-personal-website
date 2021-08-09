@@ -12,6 +12,11 @@ export const GlobalStyle = createGlobalStyle `
     --orange: #f25102;
     --desktop-titles: 70px;
     --mobile-titles: 40px;
+    --header-cover-color: rgb(0, 0, 0, 0.75);
+  }
+
+  body {
+    /* overflow-y: hidden; */
   }
 
   html, body, div, span, applet, object, iframe,

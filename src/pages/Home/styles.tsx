@@ -2,10 +2,20 @@ import HomeHeaderImg  from '../../assets/frederic-koberl-RrJCrlU2yZs-unsplash.jp
 import styled         from 'styled-components'
 import TestImage      from '../../assets/james-harrison-vpOeXr5wmR4-unsplash.jpg'
 
+interface TransitionProp {
+  'inScreen': boolean
+}
+
 export const MainDiv = styled.div `
-  width: 99,9vw;
-  min-height: 100vh;
+  /* width: 99,9vw; */
+  height: 100vh;
   background-color: var(--custom-black);
+  overflow-y: scroll;
+  scroll-snap-type: y proximity;
+  
+  header, article, footer {
+    scroll-snap-align: start;
+  }
 `
 export const Header = styled.header `
   width: 100%;
@@ -16,19 +26,11 @@ export const Header = styled.header `
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  .div-cover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(0, 0, 0, 0.75);
-  }
 `
 
 export const DivTitle = styled.div `
   height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,7 +38,7 @@ export const DivTitle = styled.div `
   color: var(--white);
   z-index: 1;
   text-align: center;
-  /* background-color: rebeccapurple; */
+  background-color: var(--header-cover-color);
 
   h1 {
     font-size: var(--mobile-titles);
@@ -68,17 +70,24 @@ export const Main = styled.main `
   flex-direction: column;
 `
 
-export const FirstArticle = styled.article `
-  height: auto;
+export const FirstArticle = styled.article<TransitionProp> `
+  height: 100vh;
   width: 100%;
   background-color: var(--white);
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  overflow-x: hidden;
 
-  @media (min-width: 768px) {
-    height: 100vh;
+  section, .about-image {
+    opacity: ${({inScreen}) => inScreen ? '1' : '0'};
+    transform: translateX(${({inScreen}) => inScreen ? '0px' : '-850px'});
+    transition: cubic-bezier(.17,.84,.44,1) 1.5s;
+  }
+
+  .about-image {
+    transform: translateX(${({inScreen}) => inScreen ? '0px' : '250px'});
   }
 `
 
@@ -200,25 +209,57 @@ export const Img = styled.img `
   }
 `
 
-export const SecondArticle = styled.article `
-  height: auto;
+export const SecondArticle = styled.article<TransitionProp> `
+  height: 220vh;
   width: 100%;
   background-color: var(--custom-black);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  margin: 40px 0;
+  margin: 100px 0;
 
   .services-title {
     font-size: var(--mobile-titles);
     font-weight: 100;
     color: white;
     margin-bottom: 20px;
+    opacity: ${({inScreen}) => inScreen ? '1' : '0'};
+    transition-duration: 1.5s;
   }
 
+  .transition-services {
+    opacity: ${({inScreen}) => inScreen ? '1' : '0'};
+    transform: translateY(${({inScreen}) => inScreen ? '0px' : '850px'});
+    transition: cubic-bezier(.17,.84,.44,1);
+  }
+
+  .service0 {
+    transition-duration: 1.3s;
+  }
+
+  .service1 {
+    transition-duration: 1.8s;
+  }
+
+  .service2 {
+    transition-duration: 2s;
+  }
+
+  .service3 {
+    transition-duration: 2.2s;
+  }
+
+  .service4 {
+    transition-duration: 2.4s;
+  }
+
+  .service5 {
+    transition-duration: 2.6s;
+  }
 
   @media (min-width: 768px) {
+    height: auto;
 
     .services-title {
       font-size: var(--desktop-titles);
@@ -228,7 +269,7 @@ export const SecondArticle = styled.article `
 
   @media (min-width: 1600px) {
     height: 100vh;
-  } 
+  }
 
 `
 
@@ -302,7 +343,7 @@ export const DivEachSquareOfMyService = styled.div `
   }
 `
 
-export const ThirdArticle = styled.article `
+export const ThirdArticle = styled.article<TransitionProp> `
   width: 100%;
   height: auto;
   background-color: var(--white);
@@ -318,6 +359,26 @@ export const ThirdArticle = styled.article `
 
   @media (min-width: 1500px) {
     height: 100vh;
+  }
+
+  h1, .img-one, .img-two {
+    opacity: ${({inScreen}) => inScreen ? '1' : '0'};
+  }
+
+  h1 {
+    transition-duration: 1.5s;
+  }
+
+  .img-one {
+    transition-duration: 1s;
+    transition-delay: .3s;
+    transform: scale(${({inScreen}) => inScreen ? '1' : '0.96'})
+  } 
+
+  .img-two {
+    transition-duration: 1s;
+    transition-delay: .5s;
+    transform: scale(${({inScreen}) => inScreen ? '1' : '0.96'})
   }
 ` 
 
@@ -390,6 +451,7 @@ export const FirstDivImgIn = styled.div `
     justify-content: center;
     align-items: center;
   }
+
   .cover-child {
     visibility: hidden;
     font-size: 12px;

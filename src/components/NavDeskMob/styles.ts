@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 
 export const Nav = styled.nav `
-  position: absolute;
+  /* position: relative; */
   width: 100%;
   height: 100px;
   display: flex;
   align-items: center;
   z-index: 3;
   gap: 40px;
-
+  background-color: var(--header-cover-color);
   .first-link {
     margin-left: auto;
   }
