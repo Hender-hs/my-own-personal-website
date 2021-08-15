@@ -21,6 +21,31 @@ export const Home = () => {
   const [firstArticleIntersection, setfirstArticleIntersection]   = useState<boolean>(false)
   const [secondArticleIntersection, setSecondArticleIntersection] = useState<boolean>(false)
   const [thirdArticleIntersection, setThirdArticleIntersection]   = useState<boolean>(false)
+  const [sendEmailLib, setSendEmailLib]                           = useState<any>(null)
+
+  const ContactMe = {
+    'name': '',
+    'email': '',
+    'message': '',
+  }
+
+  const getEmailObjFromWindowObj = () => {
+    for (let key in window) {
+      key == 'Email' && setSendEmailLib(window[key])
+    }
+  }
+  
+  const sendEmail = () => {
+    sendEmailLib.send({
+      'Host': 'smtp-mail.outlook.com',
+      'Username': 'uiemi@hotmail.com',
+      'Password': 'Abc:123456%',
+      'To': 'henderson.f.p@hotmail.com',
+      'From': 'uiemi@hotmail.com',
+      'Subject': 'PORTIFOLIO PAGE USER EMAIL',
+      'Body': `Name: ${ContactMe.name}; Email: ${ContactMe.email}; Message: ${ContactMe.message}`
+    }).then((response: object) => console.log(response))
+  }
 
   const sectionsOnScreeObserve = () => {
     
@@ -94,12 +119,8 @@ export const Home = () => {
 
   useEffect(() => sectionsOnScreeObserve())
 
-  useEffect(() => {
-    for (let key in window) {
-      key == 'Email' && console.log(window[key])
-    }
-  }
-  )
+  useEffect(() => getEmailObjFromWindowObj())
+
 
   return (
     <S.MainDiv>
@@ -191,17 +212,17 @@ export const Home = () => {
           <div className='send-me-field' >
             <S.DivInputs>
               <label>Name</label>
-              <S.StyledTextField/>
+              <S.StyledTextField onChange={(event) => Object.defineProperty(ContactMe, 'name', { 'value': event.target.value, 'writable': true }) } />
             </S.DivInputs>
             <S.DivInputs>
               <label>Email</label>
-              <S.StyledTextField/>
+              <S.StyledTextField onChange={(event) => Object.defineProperty(ContactMe, 'email', { 'value': event.target.value, 'writable': true }) } />
             </S.DivInputs>
             <S.DivInputs>
               <label>Message</label>
-              <S.StyledTextField/>
+              <S.StyledTextField onChange={(event) => Object.defineProperty(ContactMe, 'message', { 'value': event.target.value, 'writable': true }) } />
             </S.DivInputs>
-            <S.ButtonSend>Send</S.ButtonSend>
+            <S.ButtonSend onClick={() => sendEmail()} >Send</S.ButtonSend>
           </div>
         </S.SendMeAMessage>
         <S.SectionFooterIcons className='icons-footer' >
