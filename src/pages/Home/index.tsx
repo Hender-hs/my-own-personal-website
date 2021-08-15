@@ -27,7 +27,7 @@ export const Home = () => {
   	const option = {
       root: document.body,
       rootMargin: '0px',
-      threshold: 0.6
+      threshold: 0
   	}
   
   	const sections = document.getElementsByClassName('intersection')
@@ -46,16 +46,16 @@ export const Home = () => {
 
           switch (intersectedElementID) {
 
-            case 'firstArticle':
-              setfirstArticleIntersection(isIntersectingEvent)
+            case 'about-me':
+              isIntersectingEvent && setfirstArticleIntersection(true)
               break
 
-            case 'secondArticle':
-              setSecondArticleIntersection(isIntersectingEvent)
+            case 'services':
+              isIntersectingEvent && setSecondArticleIntersection(true)
               break
               
-            case 'thirdArticle':
-              setThirdArticleIntersection(isIntersectingEvent)
+            case 'projects':
+              isIntersectingEvent && setThirdArticleIntersection(true)
               break
           }
         }
@@ -94,6 +94,13 @@ export const Home = () => {
 
   useEffect(() => sectionsOnScreeObserve())
 
+  useEffect(() => {
+    for (let key in window) {
+      key == 'Email' && console.log(window[key])
+    }
+  }
+  )
+
   return (
     <S.MainDiv>
       <S.Header>
@@ -104,7 +111,7 @@ export const Home = () => {
         </S.DivTitle>
       </S.Header>
       {/* <S.Main> */}
-        <S.FirstArticle id='firstArticle' className='intersection' inScreen={firstArticleIntersection} >
+        <S.FirstArticle id='about-me' className='intersection' inScreen={firstArticleIntersection} >
           <S.DivSections>
             <section className='about-title' >
               <h1>About my Job</h1>
@@ -113,7 +120,7 @@ export const Home = () => {
               <p> I’m a profissional developer as front-end and back-end.  I live in Brazil, one of the most beatiful tropical countries. </p>
               <p> I create beatiful web sites using the most modern tecnologies and with excelent pratices to anyone can work out after the project built. </p>
               <p>I give some importance things to create one web site, like: create a excelent web site for anybody can access, accessibility; confortable layouts to make the clients and visitors feel in their home; simple things, eleagant and beatiful to create a good feeling when they’re using your web site. </p>
-              <p>I came from the best actual programmer school in the world, Kenzie Academy.</p>
+              <p>I came from one of the most current programmer school in the world, Kenzie Academy.</p>
             </section>
             <section className='third-section about-adress' >
               <div>
@@ -134,7 +141,9 @@ export const Home = () => {
                 <GitLabIcon size='40' />
               </section>
               <section className='about-cv' >
-                <S.Button>Download CV</S.Button>
+                <a href='
+                https://doc-0k-9k-prod-00-apps-viewer.googleusercontent.com/viewer2/prod-00/pdf/qj303hqev9ug20cfs0k2suf0cocemhgh/mq7druspqfhuvduffg70i7d0rm8foq5r/1628479800000/3/*/APznzabcskLwrZ1aHKXCV4rIXRRH_RW1l8wl9jDeyb71CKMCAePtp3zilpcKnjDMQqBrurzKzbkG75uw2-g-RAHJIqvxjZVosDvM239boLCC33qCoXMlSb_q7EpjL2jTtskt6UNyR2gK99D1QcfgZ9vCrjRKbn_5-fTmUuzyrzQEAiYpPn1kxQEo4wI3RJaNBt5wxV8RrZNjDEQLkkwx8ptKZ_kh3ixyV5v18KKmvhi4bPM8JWCRvThj30u0xpCyK_56jDx8zxPIo7ecgNYe8d-DfDMp34RnVVVMIR7q2p3vhVJyMSoJkEdj7_j2RffT8E4HG_hJhyVY24xgv9GquDHw4R2PBNlwiBRFN20KHCc-J8KTLGdNfCg=?nonce=d6ercpvkgqgvs&user=101207791202472601559&hash=20l0s2k6be4o86u6dba3eo7cn2td6p5k
+                ' target='blank'><S.Button>See My Resume</S.Button></a>
               </section>
             </section>
           </S.DivSections>
@@ -142,7 +151,7 @@ export const Home = () => {
             <S.Img src={AboutMeImg} alt='Workspace Image' className='about-image' />
           </figure>
         </S.FirstArticle>
-        <S.SecondArticle id='secondArticle' className='intersection' inScreen={secondArticleIntersection} >
+        <S.SecondArticle id='services' className='intersection' inScreen={secondArticleIntersection} >
           <section id='servicesTitle'  >
             <h1 className='services-title' >My Services</h1>
           </section>
@@ -150,7 +159,7 @@ export const Home = () => {
             { SectionMyServicesObj.map(printSectionMyServicesObj) }
           </S.SectionSquares>
         </S.SecondArticle>
-        <S.ThirdArticle id='thirdArticle' className='intersection' inScreen={thirdArticleIntersection} >
+        <S.ThirdArticle id='projects' className='intersection' inScreen={thirdArticleIntersection} >
           <S.AuxPosition>
             <section id='projectsTitle' >
               <h1>My Favorite Projects</h1>

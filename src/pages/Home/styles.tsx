@@ -1,6 +1,7 @@
 import HomeHeaderImg  from '../../assets/frederic-koberl-RrJCrlU2yZs-unsplash.jpg'
 import styled         from 'styled-components'
 import TestImage      from '../../assets/james-harrison-vpOeXr5wmR4-unsplash.jpg'
+import DoIt           from '../../assets/do-it.png'
 
 interface TransitionProp {
   'inScreen': boolean
@@ -12,7 +13,8 @@ export const MainDiv = styled.div `
   background-color: var(--custom-black);
   overflow-y: scroll;
   scroll-snap-type: y proximity;
-  
+  scroll-behavior: smooth;
+
   header, article, footer {
     scroll-snap-align: start;
   }
@@ -79,15 +81,21 @@ export const FirstArticle = styled.article<TransitionProp> `
   justify-content: space-evenly;
   align-items: center;
   overflow-x: hidden;
+  padding: 150px 0;
 
   section, .about-image {
     opacity: ${({inScreen}) => inScreen ? '1' : '0'};
     transform: translateX(${({inScreen}) => inScreen ? '0px' : '-850px'});
     transition: cubic-bezier(.17,.84,.44,1) 1.5s;
+    transition-delay: 0.8s;
   }
 
   .about-image {
     transform: translateX(${({inScreen}) => inScreen ? '0px' : '250px'});
+  }
+
+  @media (min-width: 768px) {
+    padding: 0;
   }
 `
 
@@ -185,11 +193,11 @@ export const Button = styled.button `
   cursor: pointer;
   transition: .3s;
   margin: 30px 0;
+  border: 1px solid black;
 
   &:hover {
     color: black;
     background-color: white;
-    border: 1px solid black;
   }
 
   @media (min-width: 768px) {
@@ -210,14 +218,14 @@ export const Img = styled.img `
 `
 
 export const SecondArticle = styled.article<TransitionProp> `
-  height: 220vh;
+  height: auto;
   width: 100%;
   background-color: var(--custom-black);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  margin: 100px 0;
+  padding: 150px 0;
 
   .services-title {
     font-size: var(--mobile-titles);
@@ -226,12 +234,14 @@ export const SecondArticle = styled.article<TransitionProp> `
     margin-bottom: 20px;
     opacity: ${({inScreen}) => inScreen ? '1' : '0'};
     transition-duration: 1.5s;
+    transition-delay: 0.4s;
   }
 
   .transition-services {
     opacity: ${({inScreen}) => inScreen ? '1' : '0'};
     transform: translateY(${({inScreen}) => inScreen ? '0px' : '850px'});
     transition: cubic-bezier(.17,.84,.44,1);
+    transition-delay: 0.7s;
   }
 
   .service0 {
@@ -260,6 +270,7 @@ export const SecondArticle = styled.article<TransitionProp> `
 
   @media (min-width: 768px) {
     height: auto;
+    padding: 0;
 
     .services-title {
       font-size: var(--desktop-titles);
@@ -351,7 +362,7 @@ export const ThirdArticle = styled.article<TransitionProp> `
   flex-direction: column;
   height: 100vh;
   transition: .5s;
-
+  
   @media (min-width: 768px) {
     height: 180vh;
     padding: 30px 0 100px 0;
@@ -366,19 +377,20 @@ export const ThirdArticle = styled.article<TransitionProp> `
   }
 
   h1 {
-    transition-duration: 1.5s;
+    transition-duration: 1s;
+    transition-delay: 1s;
   }
 
   .img-one {
     transition-duration: 1s;
-    transition-delay: .3s;
-    transform: scale(${({inScreen}) => inScreen ? '1' : '0.96'})
+    transition-delay: 1.3s;
+    transform: scale(${({inScreen}) => inScreen ? '1' : '0.96'});
   } 
 
   .img-two {
     transition-duration: 1s;
-    transition-delay: .5s;
-    transform: scale(${({inScreen}) => inScreen ? '1' : '0.96'})
+    transition-delay: 1.5s;
+    transform: scale(${({inScreen}) => inScreen ? '1' : '0.96'});
   }
 ` 
 
@@ -435,8 +447,8 @@ export const DivOutImg = styled.div `
 export const FirstDivImgIn = styled.div `
   width: 100%;
   height: 100%;
-  background-image: url(${TestImage});
-  background-position: center center;
+  background-image: url(${DoIt});
+  background-position: center;
   background-size: cover;
   transition: 0.5s;
   cursor: pointer;
