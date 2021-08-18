@@ -14,14 +14,15 @@ export const Nav = () => {
         {/* <S.H3><a href='#services'>Knowledge</a></S.H3> */}
         <S.H3><a href='#services'>Services</a></S.H3>
         <S.H3><a href='#projects'>Projects</a></S.H3>
-        <S.LangMenu>
+        <S.H3><a href='#contact-me'>Contact-me</a></S.H3>
+        {/* <S.LangMenu>
           <S.H3>Language <DownArrow color='white' /> </S.H3>
           <ul>
             <li>Portuguese</li>
             <li>English</li>
             <li>Spanish</li>
           </ul>
-        </S.LangMenu>
+        </S.LangMenu> */}
         <S.H3 className='last-link' ><a href='#about-me'>About me</a></S.H3>
       </S.Nav>
       <S.NavMobile>
@@ -38,6 +39,7 @@ export const Nav = () => {
             <S.H3Mobile><a onClick={() => setOpenMenu(false)} href='#'>Home</a></S.H3Mobile>
             <S.H3Mobile><a onClick={() => setOpenMenu(false)} href='#services'>Services</a></S.H3Mobile>
             <S.H3Mobile><a onClick={() => setOpenMenu(false)} href='#projects'>Projects</a></S.H3Mobile>
+            <S.H3Mobile><a onClick={() => setOpenMenu(false)} href='#contact-me'>Contact-me</a></S.H3Mobile>
             {/* <S.LangMenu>
               <S.H3>Language <DownArrow color='white' /> </S.H3>
               <ul>
