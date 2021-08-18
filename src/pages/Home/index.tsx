@@ -9,6 +9,11 @@ import { IoLaptopOutline as LaptopIcon }                                      fr
 import { BiSearchAlt as SearchIcon }                                          from 'react-icons/bi'
 import { Nav }                                                                from '../../components/NavDeskMob'
 import { useEffect, useState }                                                from 'react'
+import DoIt                                                                   from '../../assets/do-it.png'
+import Tasky                                                                  from '../../assets/Tasky.png'
+import Phoneshop                                                              from '../../assets/Phoneshop.png'
+import CapStore                                                               from '../../assets/CapStore.png'
+
 
 interface MyServicesObject {
   title: string,
@@ -22,6 +27,7 @@ export const Home = () => {
   const [secondArticleIntersection, setSecondArticleIntersection] = useState<boolean>(false)
   const [thirdArticleIntersection, setThirdArticleIntersection]   = useState<boolean>(false)
   const [sendEmailLib, setSendEmailLib]                           = useState<any>(null)
+  const [statusSending, setStatusSending]                         = useState<string>('null')
 
   const ContactMe = {
     'name': '',
@@ -34,17 +40,35 @@ export const Home = () => {
       key == 'Email' && setSendEmailLib(window[key])
     }
   }
-  
+
   const sendEmail = () => {
+    setStatusSending('sending')
     sendEmailLib.send({
       'Host': 'smtp-mail.outlook.com',
       'Username': 'uiemi@hotmail.com',
       'Password': 'Abc:123456%',
-      'To': 'henderson.f.p@hotmail.com',
+      'To': 'developer.henderson@gmail.com',
       'From': 'uiemi@hotmail.com',
-      'Subject': 'PORTIFOLIO PAGE USER EMAIL',
-      'Body': `Name: ${ContactMe.name}; Email: ${ContactMe.email}; Message: ${ContactMe.message}`
-    }).then((response: object) => console.log(response))
+      'Subject': 'EMAIL FROM PORTIFOLIO PAGE',
+      'Body': `\nName: ${ContactMe.name}; \nEmail: ${ContactMe.email}; \nMessage: ${ContactMe.message}`
+    })
+    .then(() => {
+        setStatusSending('sent')
+        setTimeout(() => setStatusSending('finalize-box'), 5000)
+      }
+    )
+    .catch(() => {
+        setStatusSending('error')
+        setTimeout(() => setStatusSending('finalize-box'), 8000)
+      }
+    )
+  }
+
+  const sendMessageBox = () => {
+    if (statusSending === 'sending') return 'Sending your message...'
+    if (statusSending === 'sent') return 'Your message was sent!'
+    if (statusSending === 'error') return 'Occurred a error, try again!'
+    if (statusSending === 'finalize-box') return 'Your message was sent!'
   }
 
   const sectionsOnScreeObserve = () => {
@@ -52,7 +76,7 @@ export const Home = () => {
   	const option = {
       root: document.body,
       rootMargin: '0px',
-      threshold: 0
+      threshold: 0.05
   	}
   
   	const sections = document.getElementsByClassName('intersection')
@@ -140,13 +164,13 @@ export const Home = () => {
             <section className='about-txt' >
               <p> I’m a profissional developer as front-end and back-end.  I live in Brazil, one of the most beatiful tropical countries. </p>
               <p> I create beatiful web sites using the most modern tecnologies and with excelent pratices to anyone can work out after the project built. </p>
-              <p>I give some importance things to create one web site, like: create a excelent web site for anybody can access, accessibility; confortable layouts to make the clients and visitors feel in their home; simple things, eleagant and beatiful to create a good feeling when they’re using your web site. </p>
+              <p>I pay attention for some important things to create one web site, like: create a excelent web site for anybody can access, accessibility; confortable layouts to make the clients and visitors feel in their home; simple things, eleagant and beatiful to create a good feeling when they’re using your web site. </p>
               <p>I came from one of the most current programmer school in the world, Kenzie Academy.</p>
             </section>
             <section className='third-section about-adress' >
               <div>
                 <p> <strong>Name</strong>: Henderson Fernandes Pereira </p>
-                <p> <strong>Email</strong>: Henderson.F.P@hotmail.com </p>
+                <p> <strong>Email</strong>: Developer.henderson@gmail.com </p>
               </div>
               <div>
                 <p> <strong>Location</strong>: Brazil, Belo Horizonte </p>
@@ -155,11 +179,11 @@ export const Home = () => {
             </section>
             <section className='last-section ' >
               <section className='icons-section about-icons' >
-                <WhatsAppIcon size='40' />
-                <LinkedinIcon size='40' />
-                <EmailIcon size='40' />
-                <GitHubIcon size='40' />
-                <GitLabIcon size='40' />
+              <a target='blank' href='https://wa.link/hi72rc' >                                                           <WhatsAppIcon color='black' size='40' /></a>
+              <a target='blank' href='www.linkedin.com/in/dev-henderson-fernandes-pereira' > <LinkedinIcon color='black' size='40' /></a>
+              <a target='blank' href='#contact-me' >                                         <EmailIcon    color='black' size='40' /></a>
+              <a target='blank' href='https://github.com/Hender-hs' >                        <GitHubIcon   color='black' size='40' /></a>
+              <a target='blank' href='https://gitlab.com/Hender-hs' >                        <GitLabIcon   color='black' size='40' /></a>
               </section>
               <section className='about-cv' >
                 <a href='
@@ -186,27 +210,52 @@ export const Home = () => {
               <h1>My Favorite Projects</h1>
             </section>
             <S.SectionImg id='projectImgs'  >
+              <a target='blanck' href='https://tasky-six.vercel.app/'>
                 <S.DivOutImg className='img-one' >
-                  <S.FirstDivImgIn>
+                  <S.DivImgIn url={Tasky}>
                     <div className='cover' >
                       <SearchIcon className='cover-child' size='100' />
                       <h5 className='cover-child' >Click to know more about this project</h5>
                     </div>
-                  </S.FirstDivImgIn>
+                  </S.DivImgIn>
                 </S.DivOutImg>
+              </a>  
+              <a target='blanck' href='https://do-it-two.vercel.app/'>
                 <S.DivOutImg className='img-two' >
-                  <S.SecondDivImgIn>
+                  <S.DivImgIn url={DoIt} >
                     <div className='cover' >
                       <SearchIcon className='cover-child' size='100' />
                       <h5 className='cover-child' >Click to know more about this project</h5>
                     </div>
-                  </S.SecondDivImgIn>
+                  </S.DivImgIn>
                 </S.DivOutImg>
+              </a>
+              <a target='blanck' href='https://cap-store.vercel.app/'>
+                <S.DivOutImg className='img-one' >
+                  <S.DivImgIn url={CapStore}>
+                    <div className='cover' >
+                      <SearchIcon className='cover-child' size='100' />
+                      <h5 className='cover-child' >Click to know more about this project</h5>
+                    </div>
+                  </S.DivImgIn>
+                </S.DivOutImg>
+              </a>
+              <a target='blanck' href='https://phoneshop-eosin.vercel.app/'>
+                <S.DivOutImg className='img-two' >
+                  <S.DivImgIn url={Phoneshop}>
+                    <div className='cover' >
+                      <SearchIcon className='cover-child' size='100' />
+                      <h5 className='cover-child' >Click to know more about this project</h5>
+                    </div>
+                  </S.DivImgIn>
+                </S.DivOutImg>
+              </a>
             </S.SectionImg>
           </S.AuxPosition>
         </S.ThirdArticle>
       {/* </S.Main> */}
-      <S.Footer>
+      <S.Footer id='contact-me' >
+        <S.BoxSendingStatus status={statusSending}><span>{sendMessageBox()}</span></S.BoxSendingStatus>
         <S.SendMeAMessage>
           <h1>Contact Me</h1>
           <div className='send-me-field' >
@@ -226,11 +275,11 @@ export const Home = () => {
           </div>
         </S.SendMeAMessage>
         <S.SectionFooterIcons className='icons-footer' >
-              <WhatsAppIcon color='white' size='40' />
-              <LinkedinIcon color='white' size='40' />
-              <EmailIcon    color='white' size='40' />
-              <GitHubIcon   color='white' size='40' />
-              <GitLabIcon   color='white' size='40' />
+              <a target='blank' href='https://wa.link/hi72rc' >                                                           <WhatsAppIcon color='white' size='40' /></a>
+              <a target='blank' href='www.linkedin.com/in/dev-henderson-fernandes-pereira' > <LinkedinIcon color='white' size='40' /></a>
+              <a target='blank' href='#contact-me' >                                         <EmailIcon    color='white' size='40' /></a>
+              <a target='blank' href='https://github.com/Hender-hs' >                        <GitHubIcon   color='white' size='40' /></a>
+              <a target='blank' href='https://gitlab.com/Hender-hs' >                        <GitLabIcon   color='white' size='40' /></a>
         </S.SectionFooterIcons>
       </S.Footer>
     </S.MainDiv>

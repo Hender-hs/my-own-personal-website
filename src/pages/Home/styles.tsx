@@ -1,10 +1,17 @@
-import HomeHeaderImg  from '../../assets/frederic-koberl-RrJCrlU2yZs-unsplash.jpg'
-import styled         from 'styled-components'
-import TestImage      from '../../assets/james-harrison-vpOeXr5wmR4-unsplash.jpg'
-import DoIt           from '../../assets/do-it.png'
+import HomeHeaderImg      from '../../assets/frederic-koberl-RrJCrlU2yZs-unsplash.jpg'
+import styled             from 'styled-components'
+import TestImage          from '../../assets/james-harrison-vpOeXr5wmR4-unsplash.jpg'
 
 interface TransitionProp {
   'inScreen': boolean
+}
+
+interface SendingEmailStatus {
+  'status': string,
+}
+
+interface UrlBackground {
+  'url': string
 }
 
 export const MainDiv = styled.div `
@@ -87,7 +94,7 @@ export const FirstArticle = styled.article<TransitionProp> `
     opacity: ${({inScreen}) => inScreen ? '1' : '0'};
     transform: translateX(${({inScreen}) => inScreen ? '0px' : '-850px'});
     transition: cubic-bezier(.17,.84,.44,1) 1.5s;
-    transition-delay: 0.8s;
+    transition-delay: 0.4s;
   }
 
   .about-image {
@@ -234,14 +241,14 @@ export const SecondArticle = styled.article<TransitionProp> `
     margin-bottom: 20px;
     opacity: ${({inScreen}) => inScreen ? '1' : '0'};
     transition-duration: 1.5s;
-    transition-delay: 0.4s;
+    transition-delay: 0.2s;
   }
 
   .transition-services {
     opacity: ${({inScreen}) => inScreen ? '1' : '0'};
     transform: translateY(${({inScreen}) => inScreen ? '0px' : '850px'});
     transition: cubic-bezier(.17,.84,.44,1);
-    transition-delay: 0.7s;
+    transition-delay: 0.5s;
   }
 
   .service0 {
@@ -360,16 +367,10 @@ export const ThirdArticle = styled.article<TransitionProp> `
   background-color: var(--white);
   display: flex;
   flex-direction: column;
-  height: 100vh;
   transition: .5s;
   
   @media (min-width: 768px) {
-    height: 180vh;
     padding: 30px 0 100px 0;
-  }
-
-  @media (min-width: 1500px) {
-    height: 100vh;
   }
 
   h1, .img-one, .img-two {
@@ -378,24 +379,28 @@ export const ThirdArticle = styled.article<TransitionProp> `
 
   h1 {
     transition-duration: 1s;
-    transition-delay: 1s;
+    transition-delay: .1s;
   }
 
   .img-one {
     transition-duration: 1s;
-    transition-delay: 1.3s;
+    transition-delay: .3s;
     transform: scale(${({inScreen}) => inScreen ? '1' : '0.96'});
   } 
 
   .img-two {
     transition-duration: 1s;
-    transition-delay: 1.5s;
+    transition-delay: .5s;
     transform: scale(${({inScreen}) => inScreen ? '1' : '0.96'});
+  }
+
+  a {
+    text-decoration: none;
+    color: unset
   }
 ` 
 
 export const AuxPosition = styled.div `
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -404,6 +409,7 @@ export const AuxPosition = styled.div `
   h1 {
     font-size: calc(var(--mobile-titles) - 5px);
     font-weight: 100;
+    padding: 25px 0;
   }
 
   @media (min-width: 768px) {
@@ -411,9 +417,8 @@ export const AuxPosition = styled.div `
 
     h1 {
       width: 30%;
-      margin-left: 14%;
       font-size: calc(var(--desktop-titles) + 10px);
-      margin-top: 45px;
+      margin: 45px 0 15px 14%;
     }
   }
 `
@@ -423,11 +428,11 @@ export const SectionImg = styled.section `
   height: 80%;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
   
   @media (min-width: 768px) {
+    flex-wrap: wrap;
     flex-direction: row;
   }
 `
@@ -437,17 +442,18 @@ export const DivOutImg = styled.div `
   height: 216px;
   position: relative;
   overflow: hidden;
+  margin: 25px 0;
 
   @media (min-width: 768px) {
-    width: 715px;
-    height: 457px;
+    width: 615px;
+    height: 327px;
   }
 `
 
-export const FirstDivImgIn = styled.div `
+export const DivImgIn = styled.div<UrlBackground> `
   width: 100%;
   height: 100%;
-  background-image: url(${DoIt});
+  background-image: url(${({url}) => url});
   background-position: center;
   background-size: cover;
   transition: 0.5s;
@@ -476,7 +482,8 @@ export const FirstDivImgIn = styled.div `
     visibility: visible;
   }
   &:hover .cover {
-    background-color: rgba(255, 255, 255, 0.61);
+    /* background-color: rgba(255, 255, 255, 0.61); */
+    background-color: rgba(242, 103, 2, 0.9);
     visibility: visible;
   }
 
@@ -488,47 +495,47 @@ export const FirstDivImgIn = styled.div `
   }
 `
 
-export const SecondDivImgIn = styled.div `
-  width: 100%;
-  height: 100%;
-  background-image: url(${TestImage});
-  background-position: center center;
-  background-size: cover;
-  transition: 0.5s;
-  cursor: pointer;
+// export const SecondDivImgIn = styled.div `
+//   width: 100%;
+//   height: 100%;
+//   background-image: url(${Tasky});
+//   background-position: center center;
+//   background-size: cover;
+//   transition: 0.5s;
+//   cursor: pointer;
 
-  .cover {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    visibility: hidden;
-    transition: 0.5s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .cover-child {
-    visibility: hidden;
-    font-size: 12px;
-  }
+//   .cover {
+//     position: relative;
+//     width: 100%;
+//     height: 100%;
+//     visibility: hidden;
+//     transition: 0.5s;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//   }
+//   .cover-child {
+//     visibility: hidden;
+//     font-size: 12px;
+//   }
 
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:hover .cover-child {
-    visibility: visible;
-  }
-  &:hover .cover {
-    background-color: rgba(255, 255, 255, 0.61);
-    visibility: visible;
-  }
+//   &:hover {
+//     transform: scale(1.1);
+//   }
+//   &:hover .cover-child {
+//     visibility: visible;
+//   }
+//   &:hover .cover {
+//     background-color: rgba(255, 255, 255, 0.61);
+//     visibility: visible;
+//   }
 
-  @media (min-width: 768px) {
-    .cover-child {
-      font-size: unset;
-    }
-  }
-`
+//   @media (min-width: 768px) {
+//     .cover-child {
+//       font-size: unset;
+//     }
+//   }
+// `
 
 export const Footer = styled.footer `
   height: auto;
@@ -537,6 +544,8 @@ export const Footer = styled.footer `
   display: flex;
   flex-direction: column;
   align-items: center;
+
+
 `
 
 export const SendMeAMessage = styled.section `
@@ -627,4 +636,37 @@ export const SectionFooterIcons = styled.section `
   justify-content: space-evenly;
   align-items: center;
   padding-bottom: 20px;
+`
+
+export const BoxSendingStatus = styled.div<SendingEmailStatus> `
+  position: absolute;
+  left: auto;
+  bottom: 100px;
+  /* width: 200px; */
+  padding: 5px 20px;
+  height: 50px;
+  background: ${({status}) => {
+      if (status === 'sent') return '#19bd19'
+      if (status === 'sending') return 'white'
+      if (status === 'error') return 'red'
+    }
+  };
+
+  color: ${({status}) => {
+      if (status === 'sending') return 'var(--custom-black)'
+      if (status === 'sent') return 'var(--white)'
+      if (status === 'error') return 'var(--white)'
+    }
+  };
+
+  opacity: ${({status}) => status === 'finalize-box' || status === 'null' ? '0' : '1'};
+
+  transform: translateY(${({status}) => status === 'null' || status === 'finalize-box' ? '10vh' : '0' });
+
+  transition: 1.5s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
 `
