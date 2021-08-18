@@ -1,5 +1,4 @@
 import * as S                           from './styles'
-import { AiFillCaretDown as DownArrow } from 'react-icons/ai'
 import { useState }                     from 'react'
 
 export const Nav = () => {
