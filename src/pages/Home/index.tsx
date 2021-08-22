@@ -13,7 +13,7 @@ import DoIt                                                                   fr
 import Tasky                                                                  from '../../assets/Tasky.png'
 import Phoneshop                                                              from '../../assets/Phoneshop.png'
 import CapStore                                                               from '../../assets/CapStore.png'
-
+import { useLanguage }                                                        from '../../provider/language'
 
 interface MyServicesObject {
   title: string,
@@ -23,6 +23,8 @@ interface MyServicesObject {
 
 export const Home = () => {
 
+  const { languageText } = useLanguage()
+  
   const [firstArticleIntersection, setfirstArticleIntersection]   = useState<boolean>(false)
   const [secondArticleIntersection, setSecondArticleIntersection] = useState<boolean>(false)
   const [thirdArticleIntersection, setThirdArticleIntersection]   = useState<boolean>(false)
@@ -65,10 +67,10 @@ export const Home = () => {
   }
 
   const sendMessageBox = () => {
-    if (statusSending === 'sending') return 'Sending your message...'
-    if (statusSending === 'sent') return 'Your message was sent!'
-    if (statusSending === 'error') return 'Occurred a error, try again!'
-    if (statusSending === 'finalize-box') return 'Your message was sent!'
+    if (statusSending === 'sending') return languageText.popUpSendingMsg.sending
+    if (statusSending === 'sent') return languageText.popUpSendingMsg.sent
+    if (statusSending === 'error') return languageText.popUpSendingMsg.error
+    if (statusSending === 'finalize-box') return languageText.popUpSendingMsg.finalizeBox
   }
 
   const sectionsOnScreeObserve = () => {
@@ -118,12 +120,12 @@ export const Home = () => {
 
 
   const SectionMyServicesObj: MyServicesObject[] = [
-    { 'title': 'Front-end Development',  'icon': WebstormIcon,        'description': 'With languages as HTML, CSS, JavaScript, TypeScript and libs as ReactJS, I build greats web sites with the most modern tecnologies.'  },
-    { 'title': 'Web Development',        'icon': LaptopIcon,          'description': 'Web development to Desktop web sites and mobile web sites.'                                                                           },
-    { 'title': 'Mobile Development',     'icon': MobileIcon,          'description': 'Development to mobile applications with ReactJS Native'                                                                               },
-    { 'title': 'Back-end Development',   'icon': SeverIcon,           'description': 'Building a complete system to your necessities and your buissines with the most modern languages and tecnologies avaible today.'      },
-    { 'title': 'Design Development',     'icon': MaterialdesignIcon,  'description': 'A design to follow your buissines and your necessities. Made with your following desires'                                             },
-    { 'title': 'My support',             'icon': HandshakeIcon,       'description': 'My whole support for everything, everytime and everywhere.'                                                                           },
+    { 'title': languageText.secondArticle.subtitle1,  'icon': WebstormIcon,        'description': languageText.secondArticle.description1},
+    { 'title': languageText.secondArticle.subtitle2,  'icon': LaptopIcon,          'description': languageText.secondArticle.description2},
+    { 'title': languageText.secondArticle.subtitle3,  'icon': MobileIcon,          'description': languageText.secondArticle.description3},
+    { 'title': languageText.secondArticle.subtitle4,  'icon': SeverIcon,           'description': languageText.secondArticle.description4},
+    { 'title': languageText.secondArticle.subtitle5,  'icon': MaterialdesignIcon,  'description': languageText.secondArticle.description5},
+    { 'title': languageText.secondArticle.subtitle6,  'icon': HandshakeIcon,       'description': languageText.secondArticle.description6},
   ]
 
   const printSectionMyServicesObj = ({title, icon, description}: MyServicesObject, index: number) => {
@@ -151,30 +153,30 @@ export const Home = () => {
       <S.Header>
         <Nav />
         <S.DivTitle>
-          <h1>Hi. I'm Hende<span>rson</span></h1>
-          <h4>A Full stack Web Developer</h4>
+          <h1>{languageText.header.title}<span>{languageText.header.emphasisWord}</span></h1>
+          <h4>{languageText.header.subTitle}</h4>
         </S.DivTitle>
       </S.Header>
       {/* <S.Main> */}
         <S.FirstArticle id='about-me' className='intersection' inScreen={firstArticleIntersection} >
           <S.DivSections>
             <section className='about-title' >
-              <h1>About my Job</h1>
+              <h1>{languageText.firstArticle.title}</h1>
             </section>
             <section className='about-txt' >
-              <p> I’m a profissional developer as front-end and back-end.  I live in Brazil, one of the most beatiful tropical countries. </p>
-              <p> I create beatiful web sites using the most modern tecnologies and with excelent pratices to anyone can work out after the project built. </p>
-              <p>I pay attention for some important things to create one web site, like: create a excelent web site for anybody can access, accessibility; confortable layouts to make the clients and visitors feel in their home; simple things, eleagant and beatiful to create a good feeling when they’re using your web site. </p>
-              <p>I came from one of the most current programmer school in the world, Kenzie Academy.</p>
+              <p>{languageText.firstArticle.firstParagraph}</p>
+              <p>{languageText.firstArticle.SecondParagraph}</p>
+              <p>{languageText.firstArticle.thirdParagraph}</p>
+              <p>{languageText.firstArticle.fouthParagraph}</p>
             </section>
             <section className='third-section about-adress' >
               <div>
-                <p> <strong>Name</strong>: Henderson Fernandes Pereira </p>
-                <p> <strong>Email</strong>: Developer.henderson@gmail.com </p>
+                <p> <strong>{languageText.firstArticle.contact.name}</strong>: {languageText.firstArticle.contact.nameTxt}</p>
+                <p> <strong>{languageText.firstArticle.contact.email}</strong>: {languageText.firstArticle.contact.emailTxt}</p>
               </div>
               <div>
-                <p> <strong>Location</strong>: Brazil, Belo Horizonte </p>
-                <p> <strong>Phone</strong>: (31) 9 8599-3183 </p>
+                <p> <strong>{languageText.firstArticle.contact.location}</strong>: {languageText.firstArticle.contact.locationTxt} </p>
+                <p> <strong>{languageText.firstArticle.contact.phone}</strong>: {languageText.firstArticle.contact.phoneTxt}</p>
               </div>
             </section>
             <section className='last-section ' >
@@ -188,7 +190,7 @@ export const Home = () => {
               <section className='about-cv' >
                 <a href='
                 https://doc-0k-9k-prod-00-apps-viewer.googleusercontent.com/viewer2/prod-00/pdf/qj303hqev9ug20cfs0k2suf0cocemhgh/mq7druspqfhuvduffg70i7d0rm8foq5r/1628479800000/3/*/APznzabcskLwrZ1aHKXCV4rIXRRH_RW1l8wl9jDeyb71CKMCAePtp3zilpcKnjDMQqBrurzKzbkG75uw2-g-RAHJIqvxjZVosDvM239boLCC33qCoXMlSb_q7EpjL2jTtskt6UNyR2gK99D1QcfgZ9vCrjRKbn_5-fTmUuzyrzQEAiYpPn1kxQEo4wI3RJaNBt5wxV8RrZNjDEQLkkwx8ptKZ_kh3ixyV5v18KKmvhi4bPM8JWCRvThj30u0xpCyK_56jDx8zxPIo7ecgNYe8d-DfDMp34RnVVVMIR7q2p3vhVJyMSoJkEdj7_j2RffT8E4HG_hJhyVY24xgv9GquDHw4R2PBNlwiBRFN20KHCc-J8KTLGdNfCg=?nonce=d6ercpvkgqgvs&user=101207791202472601559&hash=20l0s2k6be4o86u6dba3eo7cn2td6p5k
-                ' target='blank'><S.Button>See My Resume</S.Button></a>
+                ' target='blank'><S.Button>{languageText.firstArticle.buttonCV}</S.Button></a>
               </section>
             </section>
           </S.DivSections>
@@ -198,7 +200,7 @@ export const Home = () => {
         </S.FirstArticle>
         <S.SecondArticle id='services' className='intersection' inScreen={secondArticleIntersection} >
           <section id='servicesTitle'  >
-            <h1 className='services-title' >My Services</h1>
+            <h1 className='services-title' >{languageText.secondArticle.title}</h1>
           </section>
           <S.SectionSquares className='sections-services' >
             { SectionMyServicesObj.map(printSectionMyServicesObj) }
@@ -207,7 +209,7 @@ export const Home = () => {
         <S.ThirdArticle id='projects' className='intersection' inScreen={thirdArticleIntersection} >
           <S.AuxPosition>
             <section id='projectsTitle' >
-              <h1>My Favorite Projects</h1>
+              <h1>{languageText.thirdArticle.title}</h1>
             </section>
             <S.SectionImg id='projectImgs'  >
               <a target='blanck' href='https://tasky-six.vercel.app/'>
@@ -215,7 +217,7 @@ export const Home = () => {
                   <S.DivImgIn url={Tasky}>
                     <div className='cover' >
                       <SearchIcon className='cover-child' size='100' />
-                      <h5 className='cover-child' >Click to know more about this project</h5>
+                      <h5 className='cover-child' >{languageText.thirdArticle.moreInfoProjects}</h5>
                     </div>
                   </S.DivImgIn>
                 </S.DivOutImg>
@@ -225,7 +227,7 @@ export const Home = () => {
                   <S.DivImgIn url={DoIt} >
                     <div className='cover' >
                       <SearchIcon className='cover-child' size='100' />
-                      <h5 className='cover-child' >Click to know more about this project</h5>
+                      <h5 className='cover-child' >{languageText.thirdArticle.moreInfoProjects}</h5>
                     </div>
                   </S.DivImgIn>
                 </S.DivOutImg>
@@ -235,7 +237,7 @@ export const Home = () => {
                   <S.DivImgIn url={CapStore}>
                     <div className='cover' >
                       <SearchIcon className='cover-child' size='100' />
-                      <h5 className='cover-child' >Click to know more about this project</h5>
+                      <h5 className='cover-child' >{languageText.thirdArticle.moreInfoProjects}</h5>
                     </div>
                   </S.DivImgIn>
                 </S.DivOutImg>
@@ -245,7 +247,7 @@ export const Home = () => {
                   <S.DivImgIn url={Phoneshop}>
                     <div className='cover' >
                       <SearchIcon className='cover-child' size='100' />
-                      <h5 className='cover-child' >Click to know more about this project</h5>
+                      <h5 className='cover-child' >{languageText.thirdArticle.moreInfoProjects}</h5>
                     </div>
                   </S.DivImgIn>
                 </S.DivOutImg>
@@ -257,21 +259,21 @@ export const Home = () => {
       <S.Footer id='contact-me' >
         <S.BoxSendingStatus status={statusSending}><span>{sendMessageBox()}</span></S.BoxSendingStatus>
         <S.SendMeAMessage>
-          <h1>Contact Me</h1>
+          <h1>{languageText.footer.title}</h1>
           <div className='send-me-field' >
             <S.DivInputs>
-              <label>Name</label>
+              <label>{languageText.footer.name}</label>
               <S.StyledTextField onChange={(event) => Object.defineProperty(ContactMe, 'name', { 'value': event.target.value, 'writable': true }) } />
             </S.DivInputs>
             <S.DivInputs>
-              <label>Email</label>
+              <label>{languageText.footer.email}</label>
               <S.StyledTextField onChange={(event) => Object.defineProperty(ContactMe, 'email', { 'value': event.target.value, 'writable': true }) } />
             </S.DivInputs>
             <S.DivInputs>
-              <label>Message</label>
+              <label>{languageText.footer.message}</label>
               <S.StyledTextField onChange={(event) => Object.defineProperty(ContactMe, 'message', { 'value': event.target.value, 'writable': true }) } />
             </S.DivInputs>
-            <S.ButtonSend onClick={() => sendEmail()} >Send</S.ButtonSend>
+            <S.ButtonSend onClick={() => sendEmail()} >{languageText.footer.buttonSend}</S.ButtonSend>
           </div>
         </S.SendMeAMessage>
         <S.SectionFooterIcons className='icons-footer' >
