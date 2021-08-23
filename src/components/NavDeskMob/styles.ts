@@ -5,7 +5,6 @@ interface MobileModal {
   openMenu: boolean
 }
 
-
 export const Nav = styled.nav `
   /* position: relative; */
   width: 100%;
@@ -170,8 +169,12 @@ export const PositionalModalMobileItems = styled.div `
 `
 
 export const H3Mobile = styled.h3 `
-  font-size: 55px;
+  font-size: 35px;
   color: white;
   font-weight: 100;
   cursor: pointer;
+`
+
+export const MobileToggleLang = styled(MenuModal)<MobileModal> `
+  justify-content: space-evenly;
 `
