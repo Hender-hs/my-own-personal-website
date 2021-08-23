@@ -188,9 +188,7 @@ export const Home = () => {
               <a target='blank' href='https://gitlab.com/Hender-hs' >                        <GitLabIcon   color='black' size='40' /></a>
               </section>
               <section className='about-cv' >
-                <a href='
-                https://doc-0k-9k-prod-00-apps-viewer.googleusercontent.com/viewer2/prod-00/pdf/qj303hqev9ug20cfs0k2suf0cocemhgh/mq7druspqfhuvduffg70i7d0rm8foq5r/1628479800000/3/*/APznzabcskLwrZ1aHKXCV4rIXRRH_RW1l8wl9jDeyb71CKMCAePtp3zilpcKnjDMQqBrurzKzbkG75uw2-g-RAHJIqvxjZVosDvM239boLCC33qCoXMlSb_q7EpjL2jTtskt6UNyR2gK99D1QcfgZ9vCrjRKbn_5-fTmUuzyrzQEAiYpPn1kxQEo4wI3RJaNBt5wxV8RrZNjDEQLkkwx8ptKZ_kh3ixyV5v18KKmvhi4bPM8JWCRvThj30u0xpCyK_56jDx8zxPIo7ecgNYe8d-DfDMp34RnVVVMIR7q2p3vhVJyMSoJkEdj7_j2RffT8E4HG_hJhyVY24xgv9GquDHw4R2PBNlwiBRFN20KHCc-J8KTLGdNfCg=?nonce=d6ercpvkgqgvs&user=101207791202472601559&hash=20l0s2k6be4o86u6dba3eo7cn2td6p5k
-                ' target='blank'><S.Button>{languageText.firstArticle.buttonCV}</S.Button></a>
+                <a href='https://drive.google.com/file/d/1UJpnr9N-7ixp8PklP_987KQ-traoZsrd/view?usp=sharing' target='blank'><S.Button>{languageText.firstArticle.buttonCV}</S.Button></a>
               </section>
             </section>
           </S.DivSections>
