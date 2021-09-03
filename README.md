@@ -1,6 +1,6 @@
 # My Portifolio Web Site
-> This web site to make a apresentation about myself as Web Developer.
-> Web site Link [_here_](https://portifolio-p.vercel.app/).
+> This is a web site to make a apresentation about myself as Web Developer.
+> Web site link [_here_](https://portifolio-p.vercel.app/).
 
 ## Table of Contents
 * [General Info](#general-information)
