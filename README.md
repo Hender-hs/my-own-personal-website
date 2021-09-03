@@ -1,5 +1,5 @@
 # My Portifolio Web Site
-> This is a web site to make a apresentation about myself as Web Developer.
+> This is a web site to make a apresentation about myself as a Full Stack Web Developer.
 > Web site link [_here_](https://portifolio-p.vercel.app/).
 
 ## Table of Contents
@@ -28,7 +28,7 @@
 
 ## Features
 Features avaible:
-- Send a message to my on the web site.
+- Send me a direct message on the web site.
 
 
 ## Project Status
