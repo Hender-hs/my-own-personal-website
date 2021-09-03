@@ -15,7 +15,7 @@
 ## General Information
 - It is a web site to show off my projects, my skils and myself. 
 - This web site was made with react, and in this web site was designed on figma.
-- In this site you're gonna be able to know more about me, my skills and projects, and also contact me!
+- In this web site you're gonna be able to know more about me, my skills and projects, and also contact me!
 
 
 ## Technologies and Libs Used
