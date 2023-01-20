@@ -204,7 +204,7 @@ export const Home = () => {
             { SectionMyServicesObj.map(printSectionMyServicesObj) }
           </S.SectionSquares>
         </S.SecondArticle>
-        <S.ThirdArticle id='projects' className='intersection' inScreen={thirdArticleIntersection} >
+        <S.ThirdArticle id='projects' style={{ display: "none" }} className='intersection' inScreen={thirdArticleIntersection} >
           <S.AuxPosition>
             <section id='projectsTitle' >
               <h1>{languageText.thirdArticle.title}</h1>
