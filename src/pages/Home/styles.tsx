@@ -19,8 +19,6 @@ export const MainDiv = styled.div `
   height: 100vh;
   background-color: var(--custom-black);
   overflow-y: scroll;
-  scroll-snap-type: y proximity;
-  scroll-behavior: smooth;
 
   header, article, footer {
     scroll-snap-align: start;
